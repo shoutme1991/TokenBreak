@@ -1,0 +1,52 @@
+{
+  "name": "tokenbreak",
+  "version": "1.0.0",
+  "description": "Watch Reels & Shorts while your AI codes. Pauses when it needs you.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder",
+    "dist:mac": "electron-builder --mac",
+    "dist:win": "electron-builder --win",
+    "dist:linux": "electron-builder --linux"
+  },
+  "build": {
+    "appId": "com.tokenbreak.app",
+    "productName": "TokenBreak",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer/**/*",
+      "mcp/**/*",
+      "i18n/**/*",
+      "assets/**/*"
+    ],
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "icon": "assets/icon.icns",
+      "target": ["dmg", "zip"]
+    },
+    "win": {
+      "icon": "assets/icon.ico",
+      "target": ["nsis", "portable"]
+    },
+    "linux": {
+      "icon": "assets/icon.png",
+      "target": ["AppImage", "deb"]
+    }
+  },
+  "keywords": ["ai", "developer-tools", "reels", "shorts", "tiktok", "claude", "codex", "electron"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^33.0.0",
+    "electron-builder": "^25.0.0"
+  },
+  "dependencies": {
+    "chokidar": "^4.0.0",
+    "i18next": "^24.0.0"
+  }
+}

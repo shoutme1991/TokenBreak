@@ -1,0 +1,25 @@
+{
+  "setup": {
+    "subtitle": "Schau Reels & Shorts, während deine KI programmiert",
+    "selectTools": "Wähle deine KI-Tools",
+    "selectPlatform": "Wähle deinen Inhalt",
+    "language": "Sprache",
+    "start": "Jetzt ansehen"
+  },
+  "overlay": {
+    "title": "Deine KI braucht dich!",
+    "message": "Dein KI-Tool wartet auf deine Eingabe. Überprüfe dein Terminal.",
+    "backToSetup": "Einstellungen"
+  },
+  "status": {
+    "idle": "Leerlauf — warte auf KI-Aktivität",
+    "working": "KI arbeitet — genieße dein Video!",
+    "waiting": "Die KI braucht deine Aufmerksamkeit!"
+  },
+  "tray": {
+    "show": "TokenBreak anzeigen",
+    "hide": "TokenBreak ausblenden",
+    "language": "Sprache",
+    "quit": "Beenden"
+  }
+}

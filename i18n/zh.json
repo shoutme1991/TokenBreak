@@ -1,0 +1,25 @@
+{
+  "setup": {
+    "subtitle": "AI编码时刷短视频",
+    "selectTools": "选择你的AI工具",
+    "selectPlatform": "选择观看内容",
+    "language": "语言",
+    "start": "开始观看"
+  },
+  "overlay": {
+    "title": "AI需要你！",
+    "message": "AI工具正在等待你的输入，请查看终端。",
+    "backToSetup": "设置"
+  },
+  "status": {
+    "idle": "空闲 — 等待AI活动",
+    "working": "AI工作中 — 尽情享受视频吧！",
+    "waiting": "AI需要你的确认！"
+  },
+  "tray": {
+    "show": "显示 TokenBreak",
+    "hide": "隐藏 TokenBreak",
+    "language": "语言",
+    "quit": "退出"
+  }
+}

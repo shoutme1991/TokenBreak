@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none';">
+  <title>TokenBreak</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Custom title bar (frameless window) -->
+  <header id="titlebar">
+    <div class="titlebar-drag">
+      <span class="app-title">TokenBreak</span>
+    </div>
+    <div class="titlebar-controls">
+      <button id="btn-minimize" class="titlebar-btn" aria-label="Minimize">─</button>
+      <button id="btn-maximize" class="titlebar-btn" aria-label="Maximize">□</button>
+      <button id="btn-close" class="titlebar-btn btn-close" aria-label="Close">✕</button>
+    </div>
+  </header>
+
+  <!-- Main content -->
+  <main id="app">
+    <!-- Setup screen (shown on first run / when no platform selected) -->
+    <section id="setup-screen" class="screen active">
+      <div class="setup-content">
+        <h1 class="logo-text">⏸ TokenBreak</h1>
+        <p id="setup-subtitle" data-i18n="setup.subtitle">Watch Reels & Shorts while your AI codes</p>
+
+        <!-- AI Tool Selection -->
+        <div class="setup-section">
+          <h3 data-i18n="setup.selectTools">Select your AI tools</h3>
+          <div id="tool-list" class="tool-grid">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- Platform Selection -->
+        <div class="setup-section">
+          <h3 data-i18n="setup.selectPlatform">Choose your content</h3>
+          <div class="platform-grid">
+            <button class="platform-btn" data-platform="youtube">
+              <span class="platform-icon">▶</span>
+              <span>YouTube Shorts</span>
+            </button>
+            <button class="platform-btn" data-platform="instagram">
+              <span class="platform-icon">📷</span>
+              <span>Instagram Reels</span>
+            </button>
+            <button class="platform-btn" data-platform="tiktok">
+              <span class="platform-icon">♪</span>
+              <span>TikTok</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Language -->
+        <div class="setup-section">
+          <h3 data-i18n="setup.language">Language</h3>
+          <select id="lang-select" class="lang-select">
+            <option value="en">English</option>
+            <option value="ko">한국어</option>
+            <option value="ja">日本語</option>
+            <option value="zh">中文</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="pt">Português</option>
+            <option value="ar">العربية</option>
+            <option value="hi">हिन्दी</option>
+          </select>
+        </div>
+
+        <button id="btn-start" class="btn-primary" data-i18n="setup.start">Start Watching</button>
+      </div>
+    </section>
+
+    <!-- Player screen -->
+    <section id="player-screen" class="screen">
+      <div class="player-content">
+        <!-- Webview for video content -->
+        <webview id="video-webview"
+          partition="persist:tokenbreak"
+          allowpopups="false"
+          class="video-webview">
+        </webview>
+
+        <!-- Overlay: shown when AI needs attention -->
+        <div id="attention-overlay" class="overlay hidden">
+          <div class="overlay-content">
+            <div class="pulse-ring"></div>
+            <div class="overlay-icon">⏸</div>
+            <h2 id="overlay-title" data-i18n="overlay.title">Your AI needs you!</h2>
+            <p id="overlay-message" data-i18n="overlay.message">Your AI tool is waiting for your input. Check your terminal.</p>
+            <div id="overlay-tool" class="overlay-tool"></div>
+            <button id="btn-back-to-setup" class="btn-secondary" data-i18n="overlay.backToSetup">Settings</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom status bar -->
+      <footer id="status-bar">
+        <div class="status-left">
+          <span id="status-dot" class="status-dot idle"></span>
+          <div class="status-copy">
+            <span id="status-text" data-i18n="status.idle">Idle</span>
+            <span id="status-detail" class="status-detail"></span>
+          </div>
+        </div>
+        <div class="status-right">
+          <button id="btn-platform-switch" class="btn-icon" title="Switch platform">⇄</button>
+          <button id="btn-settings" class="btn-icon" title="Settings">⚙</button>
+        </div>
+      </footer>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

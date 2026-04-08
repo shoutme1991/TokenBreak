@@ -1,0 +1,58 @@
+{
+  "setup": {
+    "subtitle": "AI가 코딩하는 동안 릴스 & 쇼츠를 감상하세요",
+    "selectTools": "사용 중인 AI 도구 선택",
+    "selectPlatform": "시청할 콘텐츠 선택",
+    "language": "언어",
+    "start": "시청 시작"
+  },
+  "overlay": {
+    "title": "AI가 당신을 기다려요!",
+    "message": "AI 도구가 입력을 기다리고 있습니다. 터미널을 확인하세요.",
+    "backToSetup": "설정"
+  },
+  "status": {
+    "idle": "대기 중 — AI 활동을 기다리는 중",
+    "working": "AI 작업 중 — 영상을 즐기세요!",
+    "waiting": "AI가 당신의 확인을 기다려요!"
+  },
+  "activity": {
+    "processing": "작업 처리 중",
+    "thinking": "생각하는 중",
+    "generating": "생성 중",
+    "writingFile": "파일 작성 중",
+    "writingCode": "코드 작성 중",
+    "readingFile": "파일 읽는 중",
+    "reading": "읽는 중",
+    "searching": "검색 중",
+    "editing": "편집 중",
+    "runningCommand": "명령 실행 중",
+    "runningTests": "테스트 실행 중",
+    "installing": "의존성 설치 중",
+    "building": "빌드 중",
+    "compiling": "컴파일 중",
+    "debugging": "디버깅 중",
+    "refactoring": "리팩터링 중",
+    "analyzing": "분석 중",
+    "creating": "생성 중",
+    "deleting": "삭제 중",
+    "updating": "업데이트 중",
+    "committing": "커밋 중",
+    "pushing": "푸시 중",
+    "pulling": "가져오는 중",
+    "awaitingResponse": "응답 대기 중",
+    "needsReview": "검토 필요",
+    "running": "실행 중",
+    "executing": "처리 실행 중",
+    "askConfirm": "확인 대기 중",
+    "askYesNo": "예/아니오 입력 대기 중",
+    "askApproval": "승인 대기 중",
+    "askChoice": "선택 대기 중"
+  },
+  "tray": {
+    "show": "TokenBreak 열기",
+    "hide": "TokenBreak 숨기기",
+    "language": "언어",
+    "quit": "종료"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "setup": {
+    "subtitle": "AIがコーディング中にリール＆ショートを楽しもう",
+    "selectTools": "使用中のAIツールを選択",
+    "selectPlatform": "視聴するコンテンツを選択",
+    "language": "言語",
+    "start": "視聴開始"
+  },
+  "overlay": {
+    "title": "AIがあなたを待っています！",
+    "message": "AIツールが入力を待っています。ターミナルを確認してください。",
+    "backToSetup": "設定"
+  },
+  "status": {
+    "idle": "待機中 — AIのアクティビティを待っています",
+    "working": "AI作業中 — 動画をお楽しみください！",
+    "waiting": "AIがあなたの確認を待っています！"
+  },
+  "tray": {
+    "show": "TokenBreakを表示",
+    "hide": "TokenBreakを非表示",
+    "language": "言語",
+    "quit": "終了"
+  }
+}

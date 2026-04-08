@@ -1,0 +1,58 @@
+{
+  "setup": {
+    "subtitle": "Watch Reels & Shorts while your AI codes",
+    "selectTools": "Select your AI tools",
+    "selectPlatform": "Choose your content",
+    "language": "Language",
+    "start": "Start Watching"
+  },
+  "overlay": {
+    "title": "Your AI needs you!",
+    "message": "Your AI tool is waiting for your input. Check your terminal.",
+    "backToSetup": "Settings"
+  },
+  "status": {
+    "idle": "Idle — waiting for AI activity",
+    "working": "AI is working — enjoy your video!",
+    "waiting": "AI needs your attention!"
+  },
+  "activity": {
+    "processing": "Processing",
+    "thinking": "Thinking",
+    "generating": "Generating",
+    "writingFile": "Writing a file",
+    "writingCode": "Writing code",
+    "readingFile": "Reading a file",
+    "reading": "Reading",
+    "searching": "Searching",
+    "editing": "Editing",
+    "runningCommand": "Running a command",
+    "runningTests": "Running tests",
+    "installing": "Installing dependencies",
+    "building": "Building",
+    "compiling": "Compiling",
+    "debugging": "Debugging",
+    "refactoring": "Refactoring",
+    "analyzing": "Analyzing",
+    "creating": "Creating",
+    "deleting": "Deleting",
+    "updating": "Updating",
+    "committing": "Committing",
+    "pushing": "Pushing",
+    "pulling": "Pulling",
+    "awaitingResponse": "Awaiting response",
+    "needsReview": "Needs review",
+    "running": "Running",
+    "executing": "Executing",
+    "askConfirm": "Waiting for confirmation",
+    "askYesNo": "Waiting for yes/no input",
+    "askApproval": "Waiting for approval",
+    "askChoice": "Waiting for a choice"
+  },
+  "tray": {
+    "show": "Show TokenBreak",
+    "hide": "Hide TokenBreak",
+    "language": "Language",
+    "quit": "Quit"
+  }
+}

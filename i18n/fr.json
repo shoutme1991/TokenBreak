@@ -1,0 +1,25 @@
+{
+  "setup": {
+    "subtitle": "Regarde des Reels et Shorts pendant que ton IA code",
+    "selectTools": "Sélectionne tes outils IA",
+    "selectPlatform": "Choisis ton contenu",
+    "language": "Langue",
+    "start": "Commencer à regarder"
+  },
+  "overlay": {
+    "title": "Ton IA a besoin de toi !",
+    "message": "Ton outil IA attend ta réponse. Vérifie ton terminal.",
+    "backToSetup": "Paramètres"
+  },
+  "status": {
+    "idle": "Inactif — en attente d'activité IA",
+    "working": "IA en cours — profite de ta vidéo !",
+    "waiting": "L'IA a besoin de ton attention !"
+  },
+  "tray": {
+    "show": "Afficher TokenBreak",
+    "hide": "Masquer TokenBreak",
+    "language": "Langue",
+    "quit": "Quitter"
+  }
+}

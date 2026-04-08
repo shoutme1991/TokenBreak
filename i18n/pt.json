@@ -1,0 +1,25 @@
+{
+  "setup": {
+    "subtitle": "Assista Reels e Shorts enquanto sua IA programa",
+    "selectTools": "Selecione suas ferramentas de IA",
+    "selectPlatform": "Escolha seu conteúdo",
+    "language": "Idioma",
+    "start": "Começar a assistir"
+  },
+  "overlay": {
+    "title": "Sua IA precisa de você!",
+    "message": "Sua ferramenta de IA está aguardando sua resposta. Verifique seu terminal.",
+    "backToSetup": "Configurações"
+  },
+  "status": {
+    "idle": "Inativo — aguardando atividade da IA",
+    "working": "IA trabalhando — aproveite seu vídeo!",
+    "waiting": "A IA precisa da sua atenção!"
+  },
+  "tray": {
+    "show": "Mostrar TokenBreak",
+    "hide": "Ocultar TokenBreak",
+    "language": "Idioma",
+    "quit": "Sair"
+  }
+}
