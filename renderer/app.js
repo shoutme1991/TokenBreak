@@ -13,6 +13,9 @@ const PLATFORM_URLS = Object.freeze({
 });
 
 const VALID_STATUSES = ['idle', 'working', 'waiting_for_input'];
+const TITLEBAR_HEIGHT = 38;
+const STATUS_BAR_HEIGHT = 56;
+const PLAYER_SYNC_DELAYS = [0, 120, 480];
 
 // ── State ───────────────────────────────────────────────────────────────────
 
@@ -37,18 +40,24 @@ const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => document.querySelectorAll(sel);
 
 const setupScreen = $('#setup-screen');
+const aboutScreen = $('#about-screen');
 const playerScreen = $('#player-screen');
-const webview = $('#video-webview');
+const playerContent = $('.player-content');
+const webviewHost = $('#webview-host');
 const overlay = $('#attention-overlay');
 const overlayTitle = $('#overlay-title');
 const overlayMessage = $('#overlay-message');
 const overlayTool = $('#overlay-tool');
+const statusBar = $('#status-bar');
 const statusDot = $('#status-dot');
 const statusText = $('#status-text');
 const statusDetail = $('#status-detail');
 const toolList = $('#tool-list');
 const langSelect = $('#lang-select');
 const btnStart = $('#btn-start');
+const btnAbout = $('#btn-about');
+const btnAboutBack = $('#btn-about-back');
+let webview = null;
 
 // ── Init ────────────────────────────────────────────────────────────────────
 
@@ -59,6 +68,7 @@ async function init() {
   applyTranslations();
   applyDirection(lang);
   updateStartButton();
+  applyFixedViewport();
   showScreen('setup');
 
   const config = await window.tokenBreak.getMonitorConfig();
@@ -69,6 +79,7 @@ async function init() {
 
   window.tokenBreak.onAiStateChange(handleAiStateChange);
   window.tokenBreak.onLanguageChanged(handleLanguageChange);
+  window.addEventListener('resize', applyFixedViewport);
 
   const aiState = await window.tokenBreak.getAiState();
   handleAiStateChange(aiState);
@@ -134,6 +145,8 @@ function setupEventListeners() {
   });
 
   btnStart.addEventListener('click', startPlaying);
+  btnAbout.addEventListener('click', () => showScreen('about'));
+  btnAboutBack.addEventListener('click', () => showScreen('setup'));
 
   $('#btn-minimize').addEventListener('click', () => window.tokenBreak.minimize());
   $('#btn-maximize').addEventListener('click', () => window.tokenBreak.maximize());
@@ -146,9 +159,18 @@ function setupEventListeners() {
 
 function setupWebviewListeners() {
   if (!webview) return;
+  if (webview.dataset.listenersAttached === 'true') return;
+  webview.dataset.listenersAttached = 'true';
 
-  webview.addEventListener('dom-ready', ensurePlayback);
-  webview.addEventListener('did-stop-loading', ensurePlayback);
+  const syncPlaybackViewport = () => {
+    scheduleFixedViewportSync();
+    ensurePlayback();
+  };
+
+  webview.addEventListener('dom-ready', syncPlaybackViewport);
+  webview.addEventListener('did-stop-loading', syncPlaybackViewport);
+  webview.addEventListener('did-navigate', syncPlaybackViewport);
+  webview.addEventListener('did-navigate-in-page', syncPlaybackViewport);
 
   webview.addEventListener('did-fail-load', (event) => {
     // Ignore common redirect/intermediate aborts from social platforms.
@@ -164,12 +186,16 @@ function updateStartButton() {
 
 function showScreen(name) {
   setupScreen.classList.remove('active');
+  aboutScreen.classList.remove('active');
   playerScreen.classList.remove('active');
 
   if (name === 'setup') {
     setupScreen.classList.add('active');
+  } else if (name === 'about') {
+    aboutScreen.classList.add('active');
   } else if (name === 'player') {
     playerScreen.classList.add('active');
+    applyFixedViewport();
   }
 }
 
@@ -180,7 +206,14 @@ function startPlaying() {
 
   showScreen('player');
   state.isPlaying = true;
-  webview.src = PLATFORM_URLS[state.platform];
+  requestAnimationFrame(() => {
+    const metrics = applyFixedViewport();
+    mountWebview(metrics, true);
+    scheduleFixedViewportSync();
+    requestAnimationFrame(() => {
+      if (webview) webview.src = PLATFORM_URLS[state.platform];
+    });
+  });
 }
 
 function cyclePlatform() {
@@ -188,7 +221,92 @@ function cyclePlatform() {
   const currentIdx = platforms.indexOf(state.platform);
   const nextIdx = (currentIdx + 1) % platforms.length;
   state.platform = platforms[nextIdx];
-  webview.src = PLATFORM_URLS[state.platform];
+  if (!playerScreen.classList.contains('active')) return;
+
+  const metrics = applyFixedViewport();
+  mountWebview(metrics, false);
+  scheduleFixedViewportSync();
+  requestAnimationFrame(() => {
+    if (webview) webview.src = PLATFORM_URLS[state.platform];
+  });
+}
+
+function mountWebview(metrics, forceRemount = false) {
+  if (!webviewHost) return null;
+
+  if (forceRemount && webview && webview.isConnected) {
+    webview.remove();
+    webview = null;
+  }
+
+  if (webview && webview.isConnected) {
+    applyWebviewMetrics(metrics);
+    return webview;
+  }
+
+  const nextWebview = document.createElement('webview');
+  nextWebview.id = 'video-webview';
+  nextWebview.className = 'video-webview';
+  nextWebview.setAttribute('partition', 'persist:tokenbreak');
+  nextWebview.setAttribute('allowpopups', 'false');
+  applyWebviewMetrics(metrics, nextWebview);
+
+  webviewHost.textContent = '';
+  webviewHost.appendChild(nextWebview);
+  webview = nextWebview;
+  setupWebviewListeners();
+  return webview;
+}
+
+function applyFixedViewport() {
+  if (!playerScreen || !playerContent || !webviewHost || !statusBar) return;
+
+  const fullWidth = Math.max(0, Math.round(window.innerWidth));
+  const appHeight = Math.max(0, Math.round(window.innerHeight - TITLEBAR_HEIGHT));
+  const playerHeight = Math.max(0, appHeight - STATUS_BAR_HEIGHT);
+  const statusHeight = statusBar.offsetHeight || STATUS_BAR_HEIGHT;
+
+  if (!fullWidth || !appHeight || !playerHeight) return null;
+
+  playerScreen.style.width = `${fullWidth}px`;
+  playerScreen.style.height = `${appHeight}px`;
+
+  playerContent.style.width = `${fullWidth}px`;
+  playerContent.style.height = `${playerHeight}px`;
+  playerContent.style.minHeight = `${playerHeight}px`;
+  playerContent.style.maxHeight = `${playerHeight}px`;
+
+  webviewHost.style.width = `${fullWidth}px`;
+  webviewHost.style.height = `${playerHeight}px`;
+  webviewHost.style.minHeight = `${playerHeight}px`;
+  webviewHost.style.maxHeight = `${playerHeight}px`;
+
+  statusBar.style.width = `${fullWidth}px`;
+  statusBar.style.height = `${statusHeight}px`;
+
+  const metrics = { fullWidth, playerHeight };
+  applyWebviewMetrics(metrics);
+  return metrics;
+}
+
+function applyWebviewMetrics(metrics, target = webview) {
+  if (!target || !metrics) return;
+
+  target.style.display = 'flex';
+  target.style.width = `${metrics.fullWidth}px`;
+  target.style.height = `${metrics.playerHeight}px`;
+  target.style.minWidth = `${metrics.fullWidth}px`;
+  target.style.minHeight = `${metrics.playerHeight}px`;
+  target.style.maxWidth = `${metrics.fullWidth}px`;
+  target.style.maxHeight = `${metrics.playerHeight}px`;
+}
+
+function scheduleFixedViewportSync() {
+  PLAYER_SYNC_DELAYS.forEach((delay) => {
+    window.setTimeout(() => {
+      applyFixedViewport();
+    }, delay);
+  });
 }
 
 function ensurePlayback() {

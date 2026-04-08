@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">TokenBreak logo</title>
+  <desc id="desc">A glowing token with pause bars and a missing bite that suggests a break.</desc>
+  <rect x="64" y="64" width="896" height="896" rx="220" fill="#0f172a"/>
+  <circle cx="540" cy="468" r="392" fill="#be123c" opacity="0.18"/>
+
+  <g transform="translate(0 8)">
+    <circle cx="512" cy="512" r="286" fill="#f97316"/>
+    <circle cx="512" cy="512" r="246" fill="none" stroke="#fdba74" stroke-width="24"/>
+
+    <rect x="408" y="338" width="84" height="348" rx="42" fill="#ffffff"/>
+    <rect x="532" y="338" width="84" height="348" rx="42" fill="#ffffff"/>
+
+    <circle cx="728" cy="710" r="112" fill="#0f172a"/>
+    <path d="M657 733C690 703 724 683 774 675" fill="none" stroke="#f8fafc" stroke-linecap="round" stroke-width="28" opacity="0.96"/>
+  </g>
+</svg>

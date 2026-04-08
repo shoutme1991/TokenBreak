@@ -3,15 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="application-name" content="TokenBreak">
+  <meta name="description" content="Short-form video companion for AI coding sessions that pauses when your tools need attention.">
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none';">
   <title>TokenBreak</title>
+  <link rel="icon" type="image/png" href="../assets/icon.png">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <!-- Custom title bar (frameless window) -->
   <header id="titlebar">
     <div class="titlebar-drag">
-      <span class="app-title">TokenBreak</span>
+      <div class="app-brand">
+        <img class="app-brand-logo" src="../assets/logo-mark.svg" alt="TokenBreak logo">
+        <span class="app-title">TokenBreak</span>
+      </div>
     </div>
     <div class="titlebar-controls">
       <button id="btn-minimize" class="titlebar-btn" aria-label="Minimize">─</button>
@@ -25,7 +31,10 @@
     <!-- Setup screen (shown on first run / when no platform selected) -->
     <section id="setup-screen" class="screen active">
       <div class="setup-content">
-        <h1 class="logo-text">⏸ TokenBreak</h1>
+        <div class="hero-brand">
+          <img class="hero-logo" src="../assets/logo-mark.svg" alt="TokenBreak logo">
+          <h1 class="logo-text">TokenBreak</h1>
+        </div>
         <p id="setup-subtitle" data-i18n="setup.subtitle">Watch Reels & Shorts while your AI codes</p>
 
         <!-- AI Tool Selection -->
@@ -72,7 +81,85 @@
           </select>
         </div>
 
-        <button id="btn-start" class="btn-primary" data-i18n="setup.start">Start Watching</button>
+        <div class="setup-actions">
+          <button id="btn-start" class="btn-primary" data-i18n="setup.start">Start Watching</button>
+          <button id="btn-about" class="btn-secondary" data-i18n="setup.about">About TokenBreak</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- About screen -->
+    <section id="about-screen" class="screen">
+      <div class="about-content">
+        <div class="about-header">
+          <button id="btn-about-back" class="btn-secondary" data-i18n="about.back">Back</button>
+        </div>
+
+        <div class="about-hero">
+          <h1 data-i18n="about.title">About TokenBreak</h1>
+          <p data-i18n="about.subtitle">Watch short-form videos while your AI works, then pause the moment it needs you.</p>
+        </div>
+
+        <section class="about-card">
+          <h3 data-i18n="about.overviewTitle">What is TokenBreak?</h3>
+          <p data-i18n="about.overviewBody">TokenBreak plays Shorts, Reels, and TikTok while tools like Codex or Claude Code work in the background, then pauses the video when your AI needs input.</p>
+        </section>
+
+        <section class="about-card">
+          <h3 data-i18n="about.whyTitle">Why it exists</h3>
+          <p data-i18n="about.whyBody">A lot of AI coding time is just waiting. TokenBreak turns that dead time into something lighter, more fun, and easier to come back from when your tool needs attention.</p>
+        </section>
+
+        <section class="about-card">
+          <h3 data-i18n="about.supportTitle">Support TokenBreak</h3>
+          <p data-i18n="about.supportBody">If TokenBreak makes your workday a little more fun, consider supporting development and maintenance with one of the addresses below.</p>
+          <p class="about-wallet-hint" data-i18n="about.walletHint">Wallet addresses can be selected and copied.</p>
+
+          <div class="wallet-list">
+            <div class="wallet-item">
+              <span class="wallet-network">Ethereum</span>
+              <code class="wallet-address">0x4F696fD890f9cb1aC368f997c9D312D9906FcB15</code>
+            </div>
+            <div class="wallet-item">
+              <span class="wallet-network">Bitcoin</span>
+              <code class="wallet-address">bc1qts0cdkfpe7u7kvxz38sl3p6hagxpt0k63qxt77</code>
+            </div>
+            <div class="wallet-item">
+              <span class="wallet-network">Solana</span>
+              <code class="wallet-address">8pBV8PSJ8feg542rhLF55d8b7TekmVmhXWnr1dWzoFs6</code>
+            </div>
+            <div class="wallet-item">
+              <span class="wallet-network">Linea</span>
+              <code class="wallet-address">0x4F696fD890f9cb1aC368f997c9D312D9906FcB15</code>
+            </div>
+            <div class="wallet-item">
+              <span class="wallet-network">Base</span>
+              <code class="wallet-address">0x4F696fD890f9cb1aC368f997c9D312D9906FcB15</code>
+            </div>
+            <div class="wallet-item">
+              <span class="wallet-network">BNB Chain</span>
+              <code class="wallet-address">0x4F696fD890f9cb1aC368f997c9D312D9906FcB15</code>
+            </div>
+            <div class="wallet-item">
+              <span class="wallet-network">Polygon</span>
+              <code class="wallet-address">0x4F696fD890f9cb1aC368f997c9D312D9906FcB15</code>
+            </div>
+            <div class="wallet-item">
+              <span class="wallet-network">Optimism</span>
+              <code class="wallet-address">0x4F696fD890f9cb1aC368f997c9D312D9906FcB15</code>
+            </div>
+            <div class="wallet-item">
+              <span class="wallet-network">Arbitrum</span>
+              <code class="wallet-address">0x4F696fD890f9cb1aC368f997c9D312D9906FcB15</code>
+            </div>
+            <div class="wallet-item">
+              <span class="wallet-network">Tron</span>
+              <code class="wallet-address">TRdLucn7Mhn3Z4ZCy1PdyKrbiaU67oMoAb</code>
+            </div>
+          </div>
+
+          <p class="about-footnote" data-i18n="about.supportNote">Donations go toward ongoing development, testing, maintenance, and future improvements for TokenBreak.</p>
+        </section>
       </div>
     </section>
 
@@ -80,11 +167,7 @@
     <section id="player-screen" class="screen">
       <div class="player-content">
         <!-- Webview for video content -->
-        <webview id="video-webview"
-          partition="persist:tokenbreak"
-          allowpopups="false"
-          class="video-webview">
-        </webview>
+        <div id="webview-host" class="webview-host"></div>
 
         <!-- Overlay: shown when AI needs attention -->
         <div id="attention-overlay" class="overlay hidden">

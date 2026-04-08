@@ -4,7 +4,21 @@
     "selectTools": "使用中のAIツールを選択",
     "selectPlatform": "視聴するコンテンツを選択",
     "language": "言語",
-    "start": "視聴開始"
+    "start": "視聴開始",
+    "about": "About & Support"
+  },
+  "about": {
+    "back": "Back",
+    "title": "About TokenBreak",
+    "subtitle": "Enjoy short-form video while your AI works, then pause the moment it needs your attention.",
+    "overviewTitle": "What is TokenBreak?",
+    "overviewBody": "TokenBreak plays YouTube Shorts, Instagram Reels, and TikTok while tools like Codex or Claude Code work in the background, then pauses the video when your AI needs input or confirmation.",
+    "whyTitle": "Why it exists",
+    "whyBody": "A surprising amount of AI coding time is just waiting. TokenBreak turns that dead time into something lighter, more fun, and easier to come back from when your tool needs you.",
+    "supportTitle": "Support TokenBreak",
+    "supportBody": "If TokenBreak makes your workday a little more fun, consider supporting development and maintenance with one of the addresses below.",
+    "walletHint": "Wallet addresses can be selected and copied.",
+    "supportNote": "Donations go toward ongoing development, testing, maintenance, and future improvements for TokenBreak."
   },
   "overlay": {
     "title": "AIがあなたを待っています！",

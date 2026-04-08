@@ -1,7 +1,7 @@
 {
   "name": "tokenbreak",
   "version": "1.0.0",
-  "description": "Watch Reels & Shorts while your AI codes. Pauses when it needs you.",
+  "description": "Desktop companion that plays Shorts, Reels, and TikTok while your AI coding tools work, then pauses when they need you.",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -13,6 +13,7 @@
   "build": {
     "appId": "com.tokenbreak.app",
     "productName": "TokenBreak",
+    "copyright": "Copyright © 2026 TokenBreak Contributors",
     "directories": {
       "output": "dist"
     },
@@ -39,7 +40,7 @@
     }
   },
   "keywords": ["ai", "developer-tools", "reels", "shorts", "tiktok", "claude", "codex", "electron"],
-  "author": "",
+  "author": "TokenBreak Contributors",
   "license": "MIT",
   "devDependencies": {
     "electron": "^33.0.0",

@@ -4,7 +4,21 @@
     "selectTools": "사용 중인 AI 도구 선택",
     "selectPlatform": "시청할 콘텐츠 선택",
     "language": "언어",
-    "start": "시청 시작"
+    "start": "시청 시작",
+    "about": "서비스 소개 & 후원"
+  },
+  "about": {
+    "back": "뒤로",
+    "title": "TokenBreak 소개",
+    "subtitle": "AI가 일하는 동안 짧은 영상을 즐기고, 확인이 필요해지는 순간 바로 멈춰주는 도구입니다.",
+    "overviewTitle": "어떤 서비스인가요?",
+    "overviewBody": "TokenBreak는 Codex, Claude Code 같은 AI 도구가 백그라운드에서 작업하는 동안 YouTube Shorts, Instagram Reels, TikTok을 재생하고, 입력이나 확인이 필요해지면 영상을 멈춰 알려줍니다.",
+    "whyTitle": "왜 만들었나요?",
+    "whyBody": "AI 코딩 도구를 쓰다 보면 커서만 바라보며 기다리는 시간이 생각보다 많습니다. TokenBreak는 그 시간을 조금 더 가볍고 즐겁게 바꾸기 위해 만들어졌습니다.",
+    "supportTitle": "개발 후원",
+    "supportBody": "TokenBreak가 기다리는 시간을 조금 더 즐겁게 만들어줬다면, 아래 주소로 개발과 유지보수를 후원해 주세요.",
+    "walletHint": "지갑 주소는 드래그해서 복사할 수 있습니다.",
+    "supportNote": "후원금은 TokenBreak의 개발, 테스트, 유지보수, 그리고 앞으로의 기능 개선에 사용됩니다."
   },
   "overlay": {
     "title": "AI가 당신을 기다려요!",

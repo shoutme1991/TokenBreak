@@ -1,4 +1,6 @@
-# ⏸ TokenBreak
+![TokenBreak logo](./assets/logo-mark.svg)
+
+# TokenBreak
 
 **Watch Reels & Shorts while your AI codes. It pauses when it needs you.**
 
@@ -53,6 +55,22 @@ When you're done and the AI starts working again? Video **resumes**. Simple.
 - **10 languages** — EN, KO, JA, ZH, ES, FR, DE, PT, AR, HI
 - **System tray** — Runs quietly, flashes when AI needs attention
 - **Dark mode** — Because obviously
+
+## Support TokenBreak
+
+If TokenBreak saves you from staring at a blinking cursor, consider supporting the project.
+Donations help keep development, testing, maintenance, and new features moving.
+
+- **Ethereum**: `0x4F696fD890f9cb1aC368f997c9D312D9906FcB15`
+- **Bitcoin**: `bc1qts0cdkfpe7u7kvxz38sl3p6hagxpt0k63qxt77`
+- **Solana**: `8pBV8PSJ8feg542rhLF55d8b7TekmVmhXWnr1dWzoFs6`
+- **Linea**: `0x4F696fD890f9cb1aC368f997c9D312D9906FcB15`
+- **Base**: `0x4F696fD890f9cb1aC368f997c9D312D9906FcB15`
+- **BNB Chain**: `0x4F696fD890f9cb1aC368f997c9D312D9906FcB15`
+- **Polygon**: `0x4F696fD890f9cb1aC368f997c9D312D9906FcB15`
+- **Optimism**: `0x4F696fD890f9cb1aC368f997c9D312D9906FcB15`
+- **Arbitrum**: `0x4F696fD890f9cb1aC368f997c9D312D9906FcB15`
+- **Tron**: `TRdLucn7Mhn3Z4ZCy1PdyKrbiaU67oMoAb`
 
 ## Quick Start
 

@@ -10,6 +10,7 @@ let tray = null;
 let mcpMonitor = null;
 let currentLanguage = 'en';
 const IS_DEV = !app.isPackaged;
+const APP_ICON_PATH = path.join(__dirname, 'assets', 'icon.png');
 
 // ── Supported languages (whitelist) ─────────────────────────────────────────
 
@@ -73,16 +74,23 @@ function t(key) {
 
 function createWindow() {
   mainWindow = new BrowserWindow({
+    useContentSize: true,
     width: 420,
     height: 750,
-    minWidth: 360,
-    minHeight: 600,
+    minWidth: 420,
+    minHeight: 750,
+    maxWidth: 420,
+    maxHeight: 750,
+    resizable: false,
+    maximizable: false,
+    fullscreenable: false,
     show: false,
     title: 'TokenBreak',
     frame: false,
     titleBarStyle: 'hidden',
     trafficLightPosition: { x: 12, y: 12 },
     backgroundColor: '#0a0a0a',
+    icon: fs.existsSync(APP_ICON_PATH) ? APP_ICON_PATH : undefined,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       webviewTag: true,
@@ -120,6 +128,22 @@ function createWindow() {
       e.preventDefault();
       mainWindow.hide();
     }
+  });
+}
+
+function setupAppMetadata() {
+  app.setName('TokenBreak');
+
+  if (process.platform === 'darwin' && app.dock && fs.existsSync(APP_ICON_PATH)) {
+    app.dock.setIcon(APP_ICON_PATH);
+  }
+
+  app.setAboutPanelOptions({
+    applicationName: 'TokenBreak',
+    applicationVersion: app.getVersion(),
+    version: app.getVersion(),
+    copyright: 'Copyright © 2026 TokenBreak Contributors',
+    credits: 'Short-form video companion for AI coding sessions.',
   });
 }
 
@@ -373,6 +397,7 @@ if (!gotLock) {
 
   app.whenReady().then(async () => {
     await initI18n();
+    setupAppMetadata();
     setupPermissions();
     setupWebviewSecurity();
     setupIPC();
