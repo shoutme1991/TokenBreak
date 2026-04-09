@@ -56,6 +56,19 @@ When you're done and the AI starts working again? Video **resumes**. Simple.
 - **System tray** — Runs quietly, flashes when AI needs attention
 - **Dark mode** — Because obviously
 
+## Download Binaries
+
+Prebuilt binaries should be downloaded from the GitHub Releases page, not from the Git history:
+
+- **Latest release downloads**: [github.com/shoutme1991/TokenBreak/releases/latest](https://github.com/shoutme1991/TokenBreak/releases/latest)
+- **All releases**: [github.com/shoutme1991/TokenBreak/releases](https://github.com/shoutme1991/TokenBreak/releases)
+
+Release assets to upload:
+
+- **macOS (Apple Silicon / arm64)**: `TokenBreak-1.0.0-arm64.dmg`, `TokenBreak-1.0.0-arm64-mac.zip`
+- **Windows (x64)**: `TokenBreak Setup 1.0.0.exe`, `TokenBreak 1.0.0.exe`
+- **Linux (x64)**: `TokenBreak-1.0.0.AppImage`
+
 ## Support TokenBreak
 
 If TokenBreak saves you from staring at a blinking cursor, consider supporting the project.
@@ -107,15 +120,18 @@ TokenBreak monitors your AI tools in the background. When your tool asks for inp
 ## Build
 
 ```bash
-# macOS
+# macOS (current machine architecture)
 npm run dist:mac
 
-# Windows
-npm run dist:win
+# Windows x64
+npx electron-builder --win --x64
 
-# Linux
-npm run dist:linux
+# Linux x64
+npx electron-builder --linux --x64
 ```
+
+Build outputs are written to `dist/`.
+Upload the generated binaries to GitHub Releases instead of committing them into the repository.
 
 ## Project Structure
 

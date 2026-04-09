@@ -36,11 +36,15 @@
     },
     "linux": {
       "icon": "assets/icon.png",
+      "maintainer": "TokenBreak Contributors <hello@tokenbreak.app>",
       "target": ["AppImage", "deb"]
     }
   },
   "keywords": ["ai", "developer-tools", "reels", "shorts", "tiktok", "claude", "codex", "electron"],
-  "author": "TokenBreak Contributors",
+  "author": {
+    "name": "TokenBreak Contributors",
+    "email": "hello@tokenbreak.app"
+  },
   "license": "MIT",
   "devDependencies": {
     "electron": "^33.0.0",
